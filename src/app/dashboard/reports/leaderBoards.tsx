@@ -25,7 +25,6 @@ interface ActivitiesProps {
 }
 
 const LeaderBoards: React.FC<ActivitiesProps> = ({ response }) => {
-  console.log(response, typeof response);
   return (
     <>
       <div className="flex flex-wrap justify-between align-top gap-4 py-3 ">

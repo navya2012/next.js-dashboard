@@ -117,7 +117,6 @@ const Reports: React.FC = () => {
       }
 
       const result = await apiResponse.json();
-      console.log("API Response:", result);
     } catch (error) {
       console.error("Error:", error);
     } finally {

@@ -21,7 +21,6 @@ interface ActivitiesProps {
 }
 
 const ProgressBars: React.FC<ActivitiesProps> = ({ response }) => {
-  console.log(response);
 
   return (
     <>
