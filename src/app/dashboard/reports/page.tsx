@@ -116,7 +116,7 @@ const Reports: React.FC = () => {
         throw new Error("Failed to fetch data from the API.");
       }
 
-      const result = await apiResponse.json();
+       await apiResponse.json();
     } catch (error) {
       console.error("Error:", error);
     } finally {
