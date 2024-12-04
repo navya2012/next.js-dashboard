@@ -77,14 +77,14 @@ const Reports: React.FC = () => {
           throw new Error("Failed to fetch the configuration file.");
         }
 
-        const config = await response.json(); 
+        const config = await response.json();
 
         if (!config?.api_secret) {
           console.error('The JSON file is missing the "api_secret" key.');
           return;
         }
 
-        setData(config); 
+        setData(config);
       } catch (error) {
         console.error("Error:", error);
       } finally {
@@ -112,11 +112,14 @@ const Reports: React.FC = () => {
         }
       );
 
+      if (apiResponse.status == 200) {
+        alert("Response fetched successfully.Image downloaded");
+      }
       if (!apiResponse.ok) {
         throw new Error("Failed to fetch data from the API.");
       }
 
-       await apiResponse.json();
+      await apiResponse.json();
     } catch (error) {
       console.error("Error:", error);
     } finally {
@@ -192,9 +195,9 @@ const Reports: React.FC = () => {
         <Menu as="div" className="relative inline-block text-left">
           <div>
             <MenuButton className="inline-flex justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-96">
-                <p>
-                  People: <span className="text-black">Multiple Selected</span>
-                </p>
+              <p>
+                People: <span className="text-black">Multiple Selected</span>
+              </p>
               <ChevronDownIcon
                 aria-hidden="true"
                 className="-mr-1 size-5 text-gray-400"
@@ -330,9 +333,9 @@ const Reports: React.FC = () => {
         <Menu as="div" className="relative inline-block text-left">
           <div>
             <MenuButton className="inline-flex justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-80">
-            <p>
-                  Topic: <span className="text-black">{timeFrame}</span>
-                </p>
+              <p>
+                Topic: <span className="text-black">{timeFrame}</span>
+              </p>
               <ChevronDownIcon
                 aria-hidden="true"
                 className="-mr-1 size-5 text-gray-400"
@@ -345,7 +348,7 @@ const Reports: React.FC = () => {
             className="absolute right-0 z-10 mt-2 w-80 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
           >
             <div className="py-1">
-            {["All", "Last 7 Days", "This Month", "This Year", "Custom"].map(
+              {["All", "Last 7 Days", "This Month", "This Year", "Custom"].map(
                 (option) => (
                   <MenuItem key={option}>
                     <button
@@ -363,8 +366,8 @@ const Reports: React.FC = () => {
       </div>
 
       {data && <Activities response={data} />}
-    {data && <ProgressBars response={data} />}
-    {data && <LeaderBoards response={data} />}
+      {data && <ProgressBars response={data} />}
+      {data && <LeaderBoards response={data} />}
     </>
   );
 };
